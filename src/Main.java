@@ -1,53 +1,32 @@
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class Main {
     public static List<Employee> listEmployees;
-    public static final String SAVE_FILE_PATH = "src/listEmployees.ser";
+    public static final String SER_SAVE_FILE_PATH = "src/files/listEmployees.ser";
+    public static final String TXT_SAVE_FILE_PATH = "src/files/listEmployees.txt";
+    public static final String LOG_LIST_FILE_PATH = "src/files/log.txt";
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     //Десериализация при старте программы
     static {
-        File file = new File(SAVE_FILE_PATH);
-        if (file.exists()) {
-            try (FileInputStream fileInputStream = new FileInputStream(file);
-                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
-                listEmployees = (List<Employee>) objectInputStream.readObject();
-            } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        } else listEmployees = new ArrayList<>();
+        SaveLoad.loadList();
     }
 
-
     public static void main(String[] args) {
-
-
         while (true) {
             MainMenu.menu();
             try {
                 switch (reader.readLine()) {
-                    case "1":
-                        listEmployees.forEach(System.out::println);
-                        break;
-                    case "2":
-                        listEmployees.add(new Employee("2022", "Alex", 33, 180, "20", "Nsk"));
-                        break;
-                    case "3":
-
-                        break;
-                    case "4":
-                        break;
-                    case "5":
-                        break;
-                    //Сериализация и выход
-                    case "6":
-                        MainMenu.exit();
-                        break;
-                    default:
-                        MainMenu.error();
-                        break;
+                    case "1" -> MainMenu.showList();
+                    case "2" -> MainMenu.addEmployeeInList();
+                    case "3" -> MainMenu.editEmployee();
+                    case "4" -> MainMenu.deleteEmployee();
+                    case "5" -> MainMenu.sortList();
+                    case "6" -> MainMenu.exit();
+                    default -> MainMenu.error();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);

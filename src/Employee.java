@@ -1,23 +1,31 @@
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Employee implements Externalizable {
+
+    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy");
     @Serial
     private static final long serialVersionUID = 1000001L;
-    private static int countId = 0;
+    private static int countId = 1;
     private int id;
-    private String date;
+    private LocalDate date;
     private String name;
     private int age;
     private int height;
-    private String birthDate;
+    private LocalDate birthDate;
     private String birthPlace;
 
     public Employee() {
+        this.id = Employee.countId++;
+        this.date = LocalDate.now();
     }
 
-    public Employee(String date, String name, int age, int height, String birthDate, String birthPlace) {
+
+
+    public Employee(String name, int age, int height, LocalDate birthDate, String birthPlace) {
         this.id = Employee.countId++;
-        this.date = date;
+        this.date = LocalDate.now();
         this.name = name;
         this.age = age;
         this.height = height;
@@ -29,7 +37,7 @@ public class Employee implements Externalizable {
         return id;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -45,16 +53,12 @@ public class Employee implements Externalizable {
         return height;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
     public String getBirthPlace() {
         return birthPlace;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public void setName(String name) {
@@ -70,24 +74,16 @@ public class Employee implements Externalizable {
     }
 
     public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+        this.birthDate = LocalDate.parse(birthDate);
     }
-
     public void setBirthPlace(String birthPlace) {
         this.birthPlace = birthPlace;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", height=" + height +
-                ", birthDate='" + birthDate + '\'' +
-                ", birthPlace='" + birthPlace + '\'' +
-                '}';
+        return "id = " + id + " | date = " + dateTimeFormatter.format(date) + " | name = " + name + " | age = " + age + " | height = " + height +
+                " | birthDate = " + dateTimeFormatter.format(birthDate) + " | birthPlace = " + birthPlace;
     }
 
     @Override
@@ -106,11 +102,11 @@ public class Employee implements Externalizable {
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         countId = (int) in.readObject();
         this.id = in.readInt();
-        this.date = (String) in.readObject();
+        this.date = (LocalDate) in.readObject();
         this.name = (String) in.readObject();
         this.age = (int) in.readObject();
         this.height = (int) in.readObject();
-        this.birthDate = (String) in.readObject();
+        this.birthDate = (LocalDate) in.readObject();
         this.birthPlace = (String) in.readObject();
     }
 }

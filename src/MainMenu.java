@@ -1,8 +1,12 @@
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class MainMenu {
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public static Employee employee;
+
     public static void menu() {
         System.out.println("Выберите действие:");
         System.out.println("1. Просмотреть список сотрудников");
@@ -10,27 +14,66 @@ public class MainMenu {
         System.out.println("3. Редактировать сотрудника");
         System.out.println("4. Удалить сотрудника");
         System.out.println("5. Сортировка списка");
-        System.out.println("6. Выход");
+        System.out.println("6. Выход\n");
     }
 
     public static void exit() {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(Main.SAVE_FILE_PATH);
-             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            objectOutputStream.writeObject(Main.listEmployees);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        SaveLoad.saveList();
         System.exit(0);
     }
 
-    public static void error(){
-        System.out.println();
-        System.out.println("Выберите корректное значение");
-        System.out.println();
+    public static void error() {
+        System.out.println("Выберите корректное значение\n");
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
+
+    public static void showList() {
+        if (Main.listEmployees.isEmpty()) {
+            System.out.println("Список пуст\n");
+        }
+        Main.listEmployees.forEach(System.out::println);
+    }
+
+    public static void addEmployeeInList() {
+        employee = new Employee();
+        ReadEmployee.readName();
+        ReadEmployee.readAge();
+        ReadEmployee.readHeight();
+        ReadEmployee.readBirthDate();
+        ReadEmployee.readBirthPlace();
+        if (employee.getName() != null && employee.getAge() != 0 && employee.getHeight() != 0 &&
+                employee.getBirthDate() != null && employee.getBirthPlace() != null) {
+            Main.listEmployees.add(employee);
+            SaveLoad.saveList();
+        } else System.out.println("Некорректные данные\n");
+    }
+
+    public static void deleteEmployee() {
+        DeleteEmployee.delete();
+    }
+
+    public static void editEmployee() throws IOException {
+        employee = EditEmployee.getById();
+        if (employee == null) {
+            return;
+        }
+        while (true) {
+            EditEmployee.editMenu();
+            if (EditEmployee.edit() == 1){
+                return;
+            }
+        }
+    }
+
+    public static void sortList() {
+
+    }
 }
+
+
+
