@@ -1,14 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class MainMenu {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     public static Employee employee;
 
     public static void menu() {
-        System.out.println("Выберите действие:");
+        System.out.println("\nВыберите действие:");
         System.out.println("1. Просмотреть список сотрудников");
         System.out.println("2. Добавить сотрудника");
         System.out.println("3. Редактировать сотрудника");
@@ -23,7 +22,7 @@ public class MainMenu {
     }
 
     public static void error() {
-        System.out.println("Выберите корректное значение\n");
+        System.out.println("\nВыберите корректное значение\n");
 
         try {
             Thread.sleep(2000);
@@ -34,7 +33,7 @@ public class MainMenu {
 
     public static void showList() {
         if (Main.listEmployees.isEmpty()) {
-            System.out.println("Список пуст\n");
+            System.out.println("\nСписок пуст\n");
         }
         Main.listEmployees.forEach(System.out::println);
     }
@@ -50,7 +49,7 @@ public class MainMenu {
                 employee.getBirthDate() != null && employee.getBirthPlace() != null) {
             Main.listEmployees.add(employee);
             SaveLoad.saveList();
-        } else System.out.println("Некорректные данные\n");
+        } else System.out.println("\nНекорректные данные\n");
     }
 
     public static void deleteEmployee() {
@@ -64,16 +63,22 @@ public class MainMenu {
         }
         while (true) {
             EditEmployee.editMenu();
-            if (EditEmployee.edit() == 1){
+            if (EditEmployee.edit() == 1) {
                 return;
             }
         }
     }
 
-    public static void sortList() {
-
+    public static void sortList() throws IOException {
+        SortEmployee.sortMenu();
+        if (SortEmployee.sort() == 1) {
+            System.out.println("\nСписок отсортирован\n");
+        }else {
+            System.out.println("\nОшибка при сортировке\n");
+        }
     }
 }
+
 
 
 

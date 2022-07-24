@@ -6,7 +6,7 @@ public class EditEmployee {
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void editMenu() {
-        System.out.println("Выберите параметр для редактирования:");
+        System.out.println("\nВыберите параметр для редактирования:");
         System.out.println("1. Имя");
         System.out.println("2. Возраст");
         System.out.println("3. Рост");
@@ -17,13 +17,13 @@ public class EditEmployee {
 
     public static Employee getById() {
         Employee employee;
-        System.out.println("Введите id сотрудника для редактирования\n");
+        System.out.println("\nВведите id сотрудника для редактирования\n");
         while (true) {
             int id = 0;
             try {
                 id = Integer.parseInt(reader.readLine());
             } catch (Exception e) {
-                System.out.println("Попробуйте еще раз\n");
+                System.out.println("\nПопробуйте еще раз\n");
 
             }
             for (Employee emp : Main.listEmployees) {
@@ -32,7 +32,7 @@ public class EditEmployee {
                     return employee;
                 }
             }
-            System.out.println("Сотрудника с таким id нет в списке\n");
+            System.out.println("\nСотрудника с таким id нет в списке\n");
             break;
         }
         return null;

@@ -6,60 +6,60 @@ public class ReadEmployee {
 
     static void readName() {
         while (true) {
-            System.out.println("Введите имя\n");
+            System.out.println("\nВведите имя\n");
             try {
                 MainMenu.employee.setName(reader.readLine());
                 break;
             } catch (Exception e) {
-                System.out.println("Попробуйте еще раз\n");
+                System.out.println("\nПопробуйте еще раз\n");
             }
         }
     }
 
     static void readAge() {
         while (true) {
-            System.out.println("Введите возраст\n");
+            System.out.println("\nВведите возраст\n");
             try {
                 MainMenu.employee.setAge(Integer.parseInt(reader.readLine()));
                 break;
             } catch (Exception e) {
-                System.out.println("Попробуйте еще раз\n");
+                System.out.println("\nПопробуйте еще раз\n");
             }
         }
     }
 
     static void readHeight() {
         while (true) {
-            System.out.println("Введите рост\n");
+            System.out.println("\nВведите рост\n");
             try {
                 MainMenu.employee.setHeight(Integer.parseInt(reader.readLine()));
                 break;
             } catch (Exception e) {
-                System.out.println("Попробуйте еще раз\n");
+                System.out.println("\nПопробуйте еще раз\n");
             }
         }
     }
 
     static void readBirthPlace() {
         while (true) {
-            System.out.println("Введите место рождения\n");
+            System.out.println("\nВведите место рождения\n");
             try {
                 MainMenu.employee.setBirthPlace(reader.readLine());
                 break;
             } catch (Exception e) {
-                System.out.println("Попробуйте еще раз\n");
+                System.out.println("\nПопробуйте еще раз\n");
             }
         }
     }
 
     static void readBirthDate() {
         while (true) {
-            System.out.println("Введите дату рождения, пример ввода: 1960-08-30\n");
+            System.out.println("\nВведите дату рождения, пример ввода: 1960-08-30\n");
             try {
                 MainMenu.employee.setBirthDate(reader.readLine());
                 break;
             } catch (Exception e) {
-                System.out.println("Попробуйте еще раз\n");
+                System.out.println("\nПопробуйте еще раз\n");
             }
         }
     }
