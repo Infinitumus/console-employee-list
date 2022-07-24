@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MaxNur:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MaxNur_jar</output-path>
+    <root id="archive" name="MaxNur.jar">
+      <element id="module-output" name="MaxNur" />
+    </root>
+  </artifact>
+</component>

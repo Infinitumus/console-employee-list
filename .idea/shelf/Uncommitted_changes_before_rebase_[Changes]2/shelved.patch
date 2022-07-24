@@ -1,0 +1,13 @@
+Index: src/SortEmployee.java
+===================================================================
+diff --git a/src/SortEmployee.java b/src/SortEmployee.java
+--- a/src/SortEmployee.java	
++++ b/src/SortEmployee.java	
+@@ -4,5 +4,7 @@
+ public class SortEmployee {
+     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+ 
++    public static void sortMenu(){
+ 
++    }
+ }

@@ -1,9 +1,6 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class MainMenu {
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     public static Employee employee;
 
     public static void menu() {
@@ -73,6 +70,7 @@ public class MainMenu {
         SortEmployee.sortMenu();
         SortEmployee.sort();
         System.out.println("\nСписок отсортирован\n");
+        showList();
     }
 }
 

@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Main {
     public static List<Employee> listEmployees;
-    public static final String SER_SAVE_FILE_PATH = "src/files/listEmployees.ser";
-    public static final String TXT_SAVE_FILE_PATH = "src/files/listEmployees.txt";
-    public static final String LOG_LIST_FILE_PATH = "src/files/log.txt";
+    public static final String SER_SAVE_FILE_PATH = "C:\\Users\\Public\\files\\listEmployees.ser";
+    public static final String TXT_SAVE_FILE_PATH = "C:\\Users\\Public\\files\\listEmployees.txt";
+    public static final String LOG_LIST_FILE_PATH = "C:\\Users\\Public\\files\\log.txt";
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     //Десериализация при старте программы

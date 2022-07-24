@@ -1,0 +1,194 @@
+Index: src/MainMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.FileOutputStream;\r\nimport java.io.IOException;\r\nimport java.io.ObjectOutputStream;\r\n\r\npublic class MainMenu {\r\n    public static void menu() {\r\n        System.out.println(\"Выберите действие:\");\r\n        System.out.println(\"1. Просмотреть список сотрудников\");\r\n        System.out.println(\"2. Добавить сотрудника\");\r\n        System.out.println(\"3. Редактировать сотрудника\");\r\n        System.out.println(\"4. Удалить сотрудника\");\r\n        System.out.println(\"5. Сортировка списка\");\r\n        System.out.println(\"6. Выход\");\r\n    }\r\n\r\n    public static void exit() {\r\n        try (FileOutputStream fileOutputStream = new FileOutputStream(Main.SAVE_FILE_PATH);\r\n             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {\r\n            objectOutputStream.writeObject(Main.listEmployees);\r\n        } catch (IOException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n        System.exit(0);\r\n    }\r\n\r\n    public static void error(){\r\n        System.out.println();\r\n        System.out.println(\"Выберите корректное значение\");\r\n        System.out.println();\r\n        try {\r\n            Thread.sleep(2000);\r\n        } catch (InterruptedException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/MainMenu.java b/src/MainMenu.java
+--- a/src/MainMenu.java	(revision 010df79f47182504bad758f3f1ff6df3674b0fd4)
++++ b/src/MainMenu.java	(date 1658683310016)
+@@ -1,8 +1,12 @@
+-import java.io.FileOutputStream;
++import java.io.BufferedReader;
+ import java.io.IOException;
+-import java.io.ObjectOutputStream;
++import java.io.InputStreamReader;
++import java.util.Scanner;
+ 
+ public class MainMenu {
++    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
++    public static Employee employee;
++
+     public static void menu() {
+         System.out.println("Выберите действие:");
+         System.out.println("1. Просмотреть список сотрудников");
+@@ -10,27 +14,27 @@
+         System.out.println("3. Редактировать сотрудника");
+         System.out.println("4. Удалить сотрудника");
+         System.out.println("5. Сортировка списка");
+-        System.out.println("6. Выход");
++        System.out.println("6. Выход\n");
+     }
+ 
+     public static void exit() {
+-        try (FileOutputStream fileOutputStream = new FileOutputStream(Main.SAVE_FILE_PATH);
+-             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+-            objectOutputStream.writeObject(Main.listEmployees);
+-        } catch (IOException e) {
+-            throw new RuntimeException(e);
+-        }
++        SaveLoad.saveList();
+         System.exit(0);
+     }
+ 
+-    public static void error(){
+-        System.out.println();
+-        System.out.println("Выберите корректное значение");
+-        System.out.println();
++    public static void error() {
++        System.out.println("Выберите корректное значение\n");
++
+         try {
+             Thread.sleep(2000);
+         } catch (InterruptedException e) {
+             throw new RuntimeException(e);
+         }
+     }
+-}
++
++    public static void showList() {
++        if (Main.listEmployees.isEmpty()) {
++            System.out.println("Список пуст\n");
++        }
++        Main.listEmployees.forEach(System.out::println);
++    }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"80c084fa-60a8-4f13-834a-63fc783c9266\" name=\"Changes\" comment=\"Накидал примерный макет\">\r\n      <change afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/MaxNur.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Employee.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/MainMenu.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2CG2aRkss0aoP8rtNyDjQ1Xr3KB\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"MaxNur\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"80c084fa-60a8-4f13-834a-63fc783c9266\" name=\"Changes\" comment=\"\" />\r\n      <created>1658414663939</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1658414663939</updated>\r\n      <workItem from=\"1658414665485\" duration=\"8057000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Накидал примерный макет\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Накидал примерный макет\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 010df79f47182504bad758f3f1ff6df3674b0fd4)
++++ b/.idea/workspace.xml	(date 1658683583948)
+@@ -4,16 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="80c084fa-60a8-4f13-834a-63fc783c9266" name="Changes" comment="Накидал примерный макет">
+-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/MaxNur.iml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Employee.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/MainMenu.java" afterDir="false" />
++    <list default="true" id="80c084fa-60a8-4f13-834a-63fc783c9266" name="Changes" comment="Накидал примерный макет + доработки">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenu.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -39,20 +32,20 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Main" />
+@@ -75,8 +68,17 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1658414663939</updated>
+-      <workItem from="1658414665485" duration="8057000" />
++      <workItem from="1658414665485" duration="8626000" />
++      <workItem from="1658665892225" duration="13952000" />
++    </task>
++    <task id="LOCAL-00001" summary="Накидал примерный макет">
++      <created>1658423111113</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1658423111113</updated>
+     </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -87,7 +89,34 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="HEAD" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
++    <option name="RECENT_FILTERS">
++      <map>
++        <entry key="Branch">
++          <value>
++            <list>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="HEAD" />
++                </option>
++              </RecentGroup>
++            </list>
+           </value>
+         </entry>
+       </map>
+@@ -97,4 +126,8 @@
+     <MESSAGE value="Накидал примерный макет" />
+     <option name="LAST_COMMIT_MESSAGE" value="Накидал примерный макет" />
+   </component>
++  <component name="XSLT-Support.FileAssociations.UIState">
++    <expand />
++    <select />
++  </component>
+ </project>
+\ No newline at end of file

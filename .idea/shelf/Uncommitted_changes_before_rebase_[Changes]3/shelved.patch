@@ -1,0 +1,129 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,16 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="80c084fa-60a8-4f13-834a-63fc783c9266" name="Changes" comment="Накидал примерный макет">
+-      <change afterPath="$PROJECT_DIR$/src/DeleteEmployee.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/EditEmployee.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/ReadEmployee.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/SaveLoad.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/SortEmployee.java" afterDir="false" />
++    <list default="true" id="80c084fa-60a8-4f13-834a-63fc783c9266" name="Changes" comment="Накидал примерный макет + доработки">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employee.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenu.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/SortEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SortEmployee.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -39,20 +32,21 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "project.structure.last.edited": "Problems",
++    "project.structure.proportion": "0.15722656",
++    "project.structure.side.proportion": "0.2",
++    "settings.editor.selected.configurable": "configurable.group.appearance"
+   }
+-}</component>
++}]]></component>
+   <component name="RunManager">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Main" />
+@@ -76,7 +70,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1658414663939</updated>
+       <workItem from="1658414665485" duration="8626000" />
+-      <workItem from="1658665892225" duration="13952000" />
++      <workItem from="1658665892225" duration="15825000" />
+     </task>
+     <task id="LOCAL-00001" summary="Накидал примерный макет">
+       <created>1658423111113</created>
+@@ -85,7 +79,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1658423111113</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Накидал примерный макет + доработки">
++      <created>1658680683175</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1658680683175</updated>
++    </task>
++    <task id="LOCAL-00003" summary="Накидал примерный макет + доработки">
++      <created>1658681210830</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1658681210830</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -96,7 +104,19 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="master" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
+@@ -104,6 +124,11 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Накидал примерный макет" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Накидал примерный макет" />
++    <MESSAGE value="Накидал примерный макет + доработки" />
++    <option name="LAST_COMMIT_MESSAGE" value="Накидал примерный макет + доработки" />
++  </component>
++  <component name="XSLT-Support.FileAssociations.UIState">
++    <expand />
++    <select />
+   </component>
+ </project>
+\ No newline at end of file

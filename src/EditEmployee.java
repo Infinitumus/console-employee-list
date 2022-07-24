@@ -17,19 +17,25 @@ public class EditEmployee {
 
     public static Employee getById() {
         Employee employee;
-        System.out.println("\nВведите id сотрудника для редактирования\n");
+        System.out.println("\nВведите id или имя сотрудника для редактирования\n");
         while (true) {
-            int id = 0;
+            int id;
+            String name = null;
             try {
-                id = Integer.parseInt(reader.readLine());
+                name = reader.readLine();
+                id = Integer.parseInt(name);
+                for (Employee emp : Main.listEmployees) {
+                    if (emp.getId() == id) {
+                        employee = emp;
+                        return employee;
+                    }
+                }
             } catch (Exception e) {
-                System.out.println("\nПопробуйте еще раз\n");
-
-            }
-            for (Employee emp : Main.listEmployees) {
-                if (emp.getId() == id) {
-                    employee = emp;
-                    return employee;
+                for (Employee emp : Main.listEmployees) {
+                    if (emp.getName().equalsIgnoreCase(name)) {
+                        employee = emp;
+                        return employee;
+                    }
                 }
             }
             System.out.println("\nСотрудника с таким id нет в списке\n");

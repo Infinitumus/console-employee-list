@@ -7,25 +7,34 @@ public class DeleteEmployee {
     public static void delete() {
         Employee employee;
         while (true) {
-            int id = 0;
+            int id;
+            String name = null;
             boolean isDeleted = false;
-            System.out.println("Введите id сотрудника для удаления из списка\n");
+            System.out.println("\nВведите id или имя сотрудника для удаления из списка\n");
             try {
-                id = Integer.parseInt(reader.readLine());
+                name = reader.readLine();
+                id = Integer.parseInt(name);
+                for (int i = 0; i < Main.listEmployees.size(); i++) {
+                    employee = Main.listEmployees.get(i);
+                    if (employee.getId() == id) {
+                        Main.listEmployees.remove(employee);
+                        isDeleted = true;
+                    }
+                }
             } catch (Exception e) {
-                System.out.println("Попробуйте еще раз\n");
-            }
-            for (int i = 0; i < Main.listEmployees.size(); i++) {
-                employee = Main.listEmployees.get(i);
-                if (employee.getId() == id) {
-                    Main.listEmployees.remove(employee);
-                    isDeleted = true;
+                for (int i = 0; i < Main.listEmployees.size(); i++) {
+                    employee = Main.listEmployees.get(i);
+                    if (employee.getName().equalsIgnoreCase(name)) {
+                        Main.listEmployees.remove(employee);
+                        isDeleted = true;
+                    }
                 }
             }
+
             if (isDeleted) {
-                System.out.println("Сотрудник удален\n");
+                System.out.println("\nСотрудник удален\n");
             } else {
-                System.out.println("Сотрудника с таким id нет в списке\n");
+                System.out.println("\nТакого сотрудника нет в списке\n");
             }
             break;
         }
