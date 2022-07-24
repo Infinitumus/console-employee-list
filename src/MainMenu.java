@@ -71,11 +71,8 @@ public class MainMenu {
 
     public static void sortList() throws IOException {
         SortEmployee.sortMenu();
-        if (SortEmployee.sort() == 1) {
-            System.out.println("\nСписок отсортирован\n");
-        }else {
-            System.out.println("\nОшибка при сортировке\n");
-        }
+        SortEmployee.sort();
+        System.out.println("\nСписок отсортирован\n");
     }
 }
 

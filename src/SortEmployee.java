@@ -13,8 +13,7 @@ public class SortEmployee {
         System.out.println("4. Возраст");
         System.out.println("5. Рост");
         System.out.println("6. Дата рождения");
-        System.out.println("7. Место рождения");
-        System.out.println("8. Выход\n");
+        System.out.println("7. Место рождения\n");
     }
 
     public static int sort() throws IOException {
@@ -26,10 +25,6 @@ public class SortEmployee {
             case 5 -> Comparators.compareByHeight();
             case 6 -> Comparators.compareByBirthDate();
             case 7 -> Comparators.compareByBirthPlace();
-            case 8 -> {
-                SaveLoad.saveList();
-                return 1;
-            }
             default -> MainMenu.error();
         }
         return 0;
