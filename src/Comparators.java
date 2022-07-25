@@ -24,6 +24,4 @@ public class Comparators {
     public static void compareByBirthPlace() {
         Main.listEmployees.sort(Comparator.comparing(Employee::getBirthPlace).thenComparing(compareById()));
     }
-
-
 }
